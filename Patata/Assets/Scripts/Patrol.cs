@@ -5,7 +5,7 @@ namespace Scripts
 
     /// Esto se usa para crear un patron de patrulla, son dos puntos en el que un enemigo se mueve
 
-    public partial class PatrolPath : MonoBehaviour
+    public partial class Patrol : MonoBehaviour
     {
         /// Fin de la ruta de patrulla
         public Vector2 startPosition, endPosition;
