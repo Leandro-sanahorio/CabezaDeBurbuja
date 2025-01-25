@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6589577027273264412}
   m_Layer: 0
   m_Name: bulletGun1Prefab
-  m_TagString: Untagged
+  m_TagString: bullet1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -23,9 +23,7 @@ public class Gun : MonoBehaviour
         float rtZ = Mathf.Atan2(diference.y, diference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rtZ + offset);
         Shoot();
-
         //Se trabajara a futuro un cambio de arma
-
 
     }
 

@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - ground
+  - bullet1
+  - bullet2
+  - Enemy
+  - HealthItem
   layers:
   - Default
   - TransparentFX

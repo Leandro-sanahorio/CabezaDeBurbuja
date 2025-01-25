@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RunPlayer : MonoBehaviour
+public class PlayerStadistics : MonoBehaviour
 {
 
     public int runSpeedPlayer = 55;
@@ -10,6 +10,12 @@ public class RunPlayer : MonoBehaviour
     public float jumpSpeedPlayer = 5f;
 
     private CheckG checkG;
+
+    public int life;
+
+    public int maximunLife;
+
+
 
     Rigidbody2D rigitBodyCharacter;
 
@@ -55,8 +61,15 @@ public class RunPlayer : MonoBehaviour
 
     }
 
-
-
+    public void HealthLife(int healthLife)
+    {
+        Debug.Log("Se curo"+healthLife);
+        life=life+healthLife;
+        if (life+healthLife>maximunLife)
+        {
+            life=maximunLife;
+        }
+    }
 
 }    
 
