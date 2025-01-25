@@ -15,6 +15,9 @@ public class PlayerStadistics : MonoBehaviour
 
     public int maximunLife;
 
+    private float initialPositionX;
+    private float initialPositionY;
+
 
 
     Rigidbody2D rigitBodyCharacter;

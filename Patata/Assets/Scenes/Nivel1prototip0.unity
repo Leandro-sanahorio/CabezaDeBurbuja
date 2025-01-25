@@ -1073,6 +1073,8 @@ MonoBehaviour:
   enemyMoveSpeedFly: 1
   fallSpeed: 3
   timeRecharger: 0
+  mainCharacter: {fileID: 0}
+  enemyType: 1
 --- !u!212 &1313898872
 SpriteRenderer:
   m_ObjectHideFlags: 0
