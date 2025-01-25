@@ -11,19 +11,15 @@ public class EnemyPatrol : MonoBehaviour
     public float rightLimit;
     public float FlyTopLimit;
     public float FlyBottomLimit;
-    public float jumpSpeedPlayer = 5f;
-    public float enemyMoveSpeed = 2f;
-    public float enemyMoveSpeedFly = 1f;
-
-    private float initialYPosition;
-    public float fallSpeed = 3f;
-
     public float timeRecharger=0;
-
+    public int chaseSpeed;
     private EnemyStadistics enemyStadistics;
     private PlayerStadistics playerStadistics;
     public GameObject mainCharacter;
     public int enemyType;
+    public GameObject enemy;
+    public float nearChaseEnemy;
+
 
 
     void Start()
@@ -49,74 +45,89 @@ public class EnemyPatrol : MonoBehaviour
             case 3:
                 CombinedPatrolJump();
                 break;
+            case 4:
+                DontPatrol();
+                break;
         }
     }
 
     void Patrol()
     {
-        // Mover enemigo
-        if (movingRight)
+        if ((mainCharacter.transform.position - enemy.transform.position).magnitude>=nearChaseEnemy)
         {
-            rb.velocity = new Vector2(enemyStadistics.enemyMoveSpeed,  rb.velocity.y);
-            sprite.flipX = false; // Ajuste basado en la orientación de sprite
-            // Verifica si se alcanzo el limite derecho
-            if (rb.position.x >= rightLimit)
+            if (movingRight)
             {
-                movingRight = false;
-            }
-        }
-        else
-        {
-            rb.velocity = new Vector2(-enemyStadistics.enemyMoveSpeed, rb.velocity.y);
-            sprite.flipX = true;
+                rb.velocity = new Vector2(enemyStadistics.enemyMoveSpeed,  rb.velocity.y);
+                sprite.flipX = false; // Ajuste basado en la orientación de sprite
+                // Verifica si se alcanzo el limite derecho
+                if (rb.position.x >= rightLimit)
+                    {
+                        movingRight = false;
+                    }
+                }
+                else
+                {
+                rb.velocity = new Vector2(-enemyStadistics.enemyMoveSpeed, rb.velocity.y);
+                sprite.flipX = true;
 
-            // Verifica si se alcanzo el limite derecho
-            if (transform.position.x <= leftLimit)
-            {
-                movingRight = true;
+                // Verifica si se alcanzo el limite derecho
+                if (transform.position.x <= leftLimit)
+                {
+                    movingRight = true;
+                }
             }
+        }else
+        {
+            enemy.transform.position=Vector2.MoveTowards(enemy.transform.position,mainCharacter.transform.position,chaseSpeed*Time.deltaTime);
         }
+        
     }
 
     void CombinedPatrol()
     {
-    // Movimiento Horizontal (izquierda/derecha)
-        if (movingRight)
-        {
-            rb.velocity = new Vector2(enemyStadistics.enemyMoveSpeed, rb.velocity.y);
-            sprite.flipX = false; // Ajuste basado en la orientación del sprite
-            if (rb.position.x >= rightLimit)
+         if ((mainCharacter.transform.position - enemy.transform.position).magnitude>=nearChaseEnemy)
+         {
+            if (movingRight)
             {
-                movingRight = false;
+                rb.velocity = new Vector2(enemyStadistics.enemyMoveSpeed, rb.velocity.y);
+                sprite.flipX = false; // Ajuste basado en la orientación del sprite
+                if (rb.position.x >= rightLimit)
+                {
+                    movingRight = false;
+                }
             }
-        }
-        else
-        {
-            rb.velocity = new Vector2(-enemyStadistics.enemyMoveSpeed, rb.velocity.y);
-            sprite.flipX = true;
-            if (rb.position.x <= leftLimit)
+            else
             {
-                movingRight = true;
+                rb.velocity = new Vector2(-enemyStadistics.enemyMoveSpeed, rb.velocity.y);
+                sprite.flipX = true;
+                if (rb.position.x <= leftLimit)
+                {
+                    movingRight = true;
+                }
             }
-        }
 
-        // Movimiento Vertical (arriba/abajo)
-        if (movingFly)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, enemyStadistics.enemyMoveSpeedFly); // Mantener la velocidad horizontal mientras cambia la vertical
-            if (rb.position.y >= FlyTopLimit)
+            // Movimiento Vertical (arriba/abajo)
+            if (movingFly)
             {
-                movingFly = false;
+                rb.velocity = new Vector2(rb.velocity.x, enemyStadistics.enemyMoveSpeedFly); // Mantener la velocidad horizontal mientras cambia la vertical
+                if (rb.position.y >= FlyTopLimit)
+                {
+                    movingFly = false;
+                }
             }
-        }
-        else
-        {
-            rb.velocity = new Vector2(rb.velocity.x, -enemyStadistics.enemyMoveSpeedFly);
-            if (rb.position.y <= FlyBottomLimit)
+            else
             {
-                movingFly = true;
+                rb.velocity = new Vector2(rb.velocity.x, -enemyStadistics.enemyMoveSpeedFly);
+                if (rb.position.y <= FlyBottomLimit)
+                {
+                    movingFly = true;
+                }
             }
-        }
+         }else
+         {
+            enemy.transform.position=Vector2.MoveTowards(enemy.transform.position,mainCharacter.transform.position,chaseSpeed*Time.deltaTime);
+         }   
+            
     }
 
     void CombinedPatrolJump()
@@ -128,27 +139,44 @@ public class EnemyPatrol : MonoBehaviour
             timeRecharger=0;
         }
         // Mover enemigo
-        if (movingRight)
+        if ((mainCharacter.transform.position - enemy.transform.position).magnitude>=nearChaseEnemy)
         {
-            rb.velocity = new Vector2(enemyStadistics.enemyMoveSpeed, rb.velocity.y);
-            sprite.flipX = false; // Ajuste basado en la orientación de sprite
-            // Verifica si se alcanzo el limite derecho
-            if (rb.position.x >= rightLimit)
+            if (movingRight)
             {
-                movingRight = false;
+                rb.velocity = new Vector2(enemyStadistics.enemyMoveSpeed, rb.velocity.y);
+                sprite.flipX = false; // Ajuste basado en la orientación de sprite
+                // Verifica si se alcanzo el limite derecho
+                if (rb.position.x >= rightLimit)
+                {
+                    movingRight = false;
+                }
             }
-        }
-        else
-        {
-            rb.velocity = new Vector2(-enemyStadistics.enemyMoveSpeed, rb.velocity.y);
-            sprite.flipX = true;
+            else
+            {
+                rb.velocity = new Vector2(-enemyStadistics.enemyMoveSpeed, rb.velocity.y);
+                sprite.flipX = true;
 
-            // Verifica si se alcanzo el limite derecho
-            if (transform.position.x <= leftLimit)
-            {
-                movingRight = true;
+                // Verifica si se alcanzo el limite derecho
+                if (transform.position.x <= leftLimit)
+                {
+                    movingRight = true;
+                }
             }
+        }else
+        {
+            enemy.transform.position=Vector2.MoveTowards(enemy.transform.position,mainCharacter.transform.position,chaseSpeed*Time.deltaTime);
         }
     }
 
+    void DontPatrol()
+    {   
+        // Mover enemigo
+        if ((mainCharacter.transform.position - enemy.transform.position).magnitude>=nearChaseEnemy)
+        {
+            rb.velocity = new Vector2(0, 0);
+        }else
+        {
+            enemy.transform.position=Vector2.MoveTowards(enemy.transform.position,mainCharacter.transform.position,chaseSpeed*Time.deltaTime);
+        }
+    }
 }
