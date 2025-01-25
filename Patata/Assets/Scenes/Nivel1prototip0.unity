@@ -1068,13 +1068,12 @@ MonoBehaviour:
   rightLimit: 4
   FlyTopLimit: -1
   FlyBottomLimit: -2.5
-  jumpSpeedPlayer: 1
-  enemyMoveSpeed: 2
-  enemyMoveSpeedFly: 1
-  fallSpeed: 3
   timeRecharger: 0
-  mainCharacter: {fileID: 0}
-  enemyType: 1
+  chaseSpeed: 2
+  mainCharacter: {fileID: 1388523365}
+  enemyType: 4
+  enemy: {fileID: 1313898869}
+  nearChaseEnemy: 2
 --- !u!212 &1313898872
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1136,7 +1135,7 @@ Transform:
   m_GameObject: {fileID: 1313898869}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.1181, y: -3.1974, z: 0}
+  m_LocalPosition: {x: 4.1181, y: -2.1, z: 0}
   m_LocalScale: {x: 0.8707376, y: 0.9676476, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1180,7 +1179,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
