@@ -9,6 +9,8 @@ public class EnemyStadistics : MonoBehaviour
     public int damageTaken;
     public int damage;
     public float enemyMoveSpeed=2f;
+    public float enemyMoveSpeedFly=0.3f;
+
     public int enemyType;
     // Start is called before the first frame update
     

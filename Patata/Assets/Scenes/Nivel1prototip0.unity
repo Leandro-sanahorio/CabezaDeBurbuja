@@ -1063,8 +1063,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingRight: 1
+  movingFly: 1
   leftLimit: 1
   rightLimit: 4
+  FlyTopLimit: -1
+  FlyBottomLimit: -2.5
+  jumpSpeedPlayer: 1
+  enemyMoveSpeed: 2
+  enemyMoveSpeedFly: 1
+  fallSpeed: 3
+  timeRecharger: 0
 --- !u!212 &1313898872
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1243,6 +1251,7 @@ MonoBehaviour:
   damageTaken: 3
   damage: 0
   enemyMoveSpeed: 2
+  enemyMoveSpeedFly: 2
   enemyType: 0
 --- !u!1 &1388523365
 GameObject:
