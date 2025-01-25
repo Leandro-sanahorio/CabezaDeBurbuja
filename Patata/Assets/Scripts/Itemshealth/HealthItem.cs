@@ -17,7 +17,7 @@ public class HealthItem : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             playerStadistics.HealthLife(healthAmount);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }
