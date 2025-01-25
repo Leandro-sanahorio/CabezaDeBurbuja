@@ -52,13 +52,19 @@ public class PlayerStadistics : MonoBehaviour
         if (Input.GetKey("w") && CheckG.isg || Input.GetKey("space") && CheckG.isg)                           // SALTO         
         {
             rigitBodyCharacter.velocity = new Vector2(rigitBodyCharacter.velocity.x, jumpSpeedPlayer);
+            
         }
         
         if (CheckG.isg == false)                                                                               // EN EL AIRE
         {
+            gameObject.GetComponent<Animator>().SetBool("jump", true);
             gameObject.GetComponent<Animator>().SetBool("Run", false);                 // animacion en el aire
+            
         }
-
+        if (CheckG.isg == true)                       //SI ESTOY EN EL SUELO
+        {
+            gameObject.GetComponent<Animator>().SetBool("jump", false);
+        }
     }
 
     public void HealthLife(int healthLife)
