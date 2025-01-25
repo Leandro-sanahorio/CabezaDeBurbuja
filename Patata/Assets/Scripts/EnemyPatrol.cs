@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
-    public float speed = 2f; // Movement speed of the enemy
-    public Transform leftLimit; // Left boundary
-    public Transform rightLimit; // Right boundary
+    public float speed = 2f; // Velocidad de movimiento de enemigo
+    public Transform leftLimit; // Limite izquierdo
+    public Transform rightLimit; // Limite Derecho
 
-    private bool movingRight = true; // Direction of movement
+    private bool movingRight = true; // Direccion de movimiento
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
 
@@ -23,13 +23,13 @@ public class EnemyPatrol : MonoBehaviour
 
     void Patrol()
     {
-        // Move the enemy
+        // Mover enemigo
         if (movingRight)
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);
-            sprite.flipX = false; // Adjust based on your sprite orientation
+            sprite.flipX = false; // Ajuste basado en la orientación de sprite
 
-            // Check if we reached the right limit
+            // Verifica si se alcanzo el limite derecho
             if (transform.position.x >= rightLimit.position.x)
             {
                 movingRight = false;
@@ -40,7 +40,7 @@ public class EnemyPatrol : MonoBehaviour
             rb.velocity = new Vector2(-speed, rb.velocity.y);
             sprite.flipX = true;
 
-            // Check if we reached the left limit
+            // Verifica si se alcanzo el limite derecho
             if (transform.position.x <= leftLimit.position.x)
             {
                 movingRight = true;
@@ -48,7 +48,7 @@ public class EnemyPatrol : MonoBehaviour
         }
     }
 
-    // Optional: Visualize patrol limits in the editor
+    //Visualiza el limite de patrulla en el editor
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

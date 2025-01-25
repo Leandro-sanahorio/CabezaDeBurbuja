@@ -23,21 +23,21 @@ public class RunPlayer : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKey("a"))                                                                                  // SI PRECIONO A
+        if (Input.GetKey("a"))                                                                                  // SI PRESIONO A
         {
             rigitBodyCharacter.velocity = (new Vector2(-runSpeedPlayer* Time.deltaTime, rigitBodyCharacter.velocity.y)); // movimiento
             //gameObject.GetComponent<SpriteRenderer>().flipX = false;                   // voltear animacion
             //gameObject.GetComponent<Animator>().SetBool("Run", true);                  // cambiar animacion 
         }
 
-        else if (Input.GetKey("d"))                                                                             // SI PRECIONO D
+        else if (Input.GetKey("d"))                                                                             // SI PRESIONO D
         {
             rigitBodyCharacter.velocity = (new Vector2(runSpeedPlayer* Time.deltaTime, rigitBodyCharacter.velocity.y));                 
             //gameObject.GetComponent<SpriteRenderer>().flipX = true;
             //gameObject.GetComponent<Animator>().SetBool("Run", true);
         }
 
-        else                                                                                                   // SI NO PRECIONO 
+        else                                                                                                   // SI NO PRESIONO 
         {         
             rigitBodyCharacter.velocity = (new Vector2(0, rigitBodyCharacter.velocity.y));                       // movimiento 0
             //gameObject.GetComponent<Animator>().SetBool("Run", false);               // animacion idle

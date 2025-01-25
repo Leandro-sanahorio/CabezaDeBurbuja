@@ -31,7 +31,7 @@ public class Gun : MonoBehaviour
 
     private void Shoot()
     {
-         // SI PRECIONO CLICK Y MI CONTADOR NO ES =>5      
+         // SI PRESIONO CLICK Y MI CONTADOR NO ES =>5      
         if (Input.GetButtonDown("Fire1")&& containerBullets<=4)                                                               
         {
             GameObject bulletGameObject = Instantiate(Proyectile, shootP.position, shootP.rotation);
