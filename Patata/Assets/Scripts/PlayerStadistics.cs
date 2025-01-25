@@ -63,7 +63,6 @@ public class PlayerStadistics : MonoBehaviour
 
     public void HealthLife(int healthLife)
     {
-        Debug.Log("Se curo"+healthLife);
         life=life+healthLife;
         if (life+healthLife>maximunLife)
         {

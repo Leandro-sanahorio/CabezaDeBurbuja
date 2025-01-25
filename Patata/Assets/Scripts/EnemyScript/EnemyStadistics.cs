@@ -8,6 +8,8 @@ public class EnemyStadistics : MonoBehaviour
     public int life;
     public int damageTaken;
     public int damage;
+    public float enemyMoveSpeed=2f;
+    public int enemyType;
     // Start is called before the first frame update
     
     public void takeDamage()

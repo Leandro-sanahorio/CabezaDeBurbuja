@@ -2,18 +2,16 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
-    public float speed = 2f; // Velocidad de movimiento de enemigo
-
-    //public Transform leftLimit; // Limite izquierdo
-    //public Transform rightLimit; // Limite Derecho
     public bool movingRight = true; // Direccion de movimiento
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
     public float leftLimit;
     public float rightLimit;
+    private EnemyStadistics enemyStadistics;
 
     void Start()
     {
+        enemyStadistics= FindObjectOfType<EnemyStadistics>();
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         leftLimit=leftLimit+rb.position.x;
@@ -30,7 +28,7 @@ public class EnemyPatrol : MonoBehaviour
         // Mover enemigo
         if (movingRight)
         {
-            rb.velocity = new Vector2(speed, rb.velocity.y);
+            rb.velocity = new Vector2(enemyStadistics.enemyMoveSpeed, rb.velocity.y);
             sprite.flipX = false; // Ajuste basado en la orientación de sprite
             // Verifica si se alcanzo el limite derecho
             if (rb.position.x >= rightLimit)
@@ -40,7 +38,7 @@ public class EnemyPatrol : MonoBehaviour
         }
         else
         {
-            rb.velocity = new Vector2(-speed, rb.velocity.y);
+            rb.velocity = new Vector2(-enemyStadistics.enemyMoveSpeed, rb.velocity.y);
             sprite.flipX = true;
 
             // Verifica si se alcanzo el limite derecho
@@ -50,6 +48,10 @@ public class EnemyPatrol : MonoBehaviour
             }
         }
     }
+
+     
+
+
 
     //Visualiza el limite de patrulla en el editor
 
