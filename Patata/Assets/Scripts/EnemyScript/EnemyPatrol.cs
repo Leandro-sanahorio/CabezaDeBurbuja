@@ -21,7 +21,7 @@ public class EnemyPatrol : MonoBehaviour
     public float nearChaseEnemy;
 
 
-
+    //Configura referencias globales a otros objetos importantes en la escena, como el jugador, las estadísticas del enemigo y su movimiento.
     void Start()
     {
         enemyStadistics= FindObjectOfType<EnemyStadistics>();
@@ -32,25 +32,32 @@ public class EnemyPatrol : MonoBehaviour
         rightLimit=rightLimit+rb.position.x;
     }
 
+    //Se usa para darle algun tipo de movimiento al enemigo dependiendo del caso
     void Update()
     {
         switch (enemyType)
         {
+            //Movimiento basico de             
             case 1:
                 Patrol();
                 break;
+            //Cucaracha              
             case 2:
                 CombinedPatrol();
                 break;
+            //Pelusa                
             case 3:
                 CombinedPatrolJump();
                 break;
+            //Polilla    
             case 4:
                 DontPatrol();
                 break;
         }
     }
 
+
+    //El enemigo se mueve de derecha a izquierda
     void Patrol()
     {
         if ((mainCharacter.transform.position - enemy.transform.position).magnitude>=nearChaseEnemy)
@@ -83,6 +90,7 @@ public class EnemyPatrol : MonoBehaviour
         
     }
 
+    //El enemigo se mueve por los aires de derecha a izquierda y tambien de arriba hacia abajo
     void CombinedPatrol()
     {
          if ((mainCharacter.transform.position - enemy.transform.position).magnitude>=nearChaseEnemy)
@@ -129,7 +137,9 @@ public class EnemyPatrol : MonoBehaviour
          }   
             
     }
+    
 
+    //El enemigo se mueve de izquierda a derecha con algun salto periodico
     void CombinedPatrolJump()
     {   
         timeRecharger+=Time.deltaTime;
@@ -168,6 +178,7 @@ public class EnemyPatrol : MonoBehaviour
         }
     }
 
+    //El enemigo se queda en reposo hasta que el jugador este cerca
     void DontPatrol()
     {   
         // Mover enemigo
