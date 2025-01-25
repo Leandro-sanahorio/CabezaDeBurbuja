@@ -5,16 +5,19 @@ using UnityEngine;
 public class RunPlayer : MonoBehaviour
 {
 
-    public int runSpeed = 55;
+    public int runSpeedPlayer = 55;
 
-    public float jumpSpeed = 5f;
+    public float jumpSpeedPlayer = 5f;
 
-    Rigidbody2D rb2d;
+    private CheckG checkG;
+
+    Rigidbody2D rigitBodyCharacter;
 
 
     private void Start()
     {
-        rb2d = GetComponent<Rigidbody2D>();
+        rigitBodyCharacter = GetComponent<Rigidbody2D>();
+        checkG= FindObjectOfType<CheckG>();
     }
 
 
@@ -22,32 +25,32 @@ public class RunPlayer : MonoBehaviour
     {
         if (Input.GetKey("a"))                                                                                  // SI PRECIONO A
         {
-            rb2d.velocity = (new Vector2(-runSpeed* Time.deltaTime, rb2d.velocity.y)); // movimiento
-            gameObject.GetComponent<SpriteRenderer>().flipX = false;                   // voltear animacion
-            gameObject.GetComponent<Animator>().SetBool("Run", true);                  // cambiar animacion 
+            rigitBodyCharacter.velocity = (new Vector2(-runSpeedPlayer* Time.deltaTime, rigitBodyCharacter.velocity.y)); // movimiento
+            //gameObject.GetComponent<SpriteRenderer>().flipX = false;                   // voltear animacion
+            //gameObject.GetComponent<Animator>().SetBool("Run", true);                  // cambiar animacion 
         }
 
         else if (Input.GetKey("d"))                                                                             // SI PRECIONO D
         {
-            rb2d.velocity = (new Vector2(runSpeed* Time.deltaTime, rb2d.velocity.y));                 
-            gameObject.GetComponent<SpriteRenderer>().flipX = true;
-            gameObject.GetComponent<Animator>().SetBool("Run", true);
+            rigitBodyCharacter.velocity = (new Vector2(runSpeedPlayer* Time.deltaTime, rigitBodyCharacter.velocity.y));                 
+            //gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            //gameObject.GetComponent<Animator>().SetBool("Run", true);
         }
 
         else                                                                                                   // SI NO PRECIONO 
         {         
-            rb2d.velocity = (new Vector2(0, rb2d.velocity.y));                       // movimiento 0
-            gameObject.GetComponent<Animator>().SetBool("Run", false);               // animacion idle
+            rigitBodyCharacter.velocity = (new Vector2(0, rigitBodyCharacter.velocity.y));                       // movimiento 0
+            //gameObject.GetComponent<Animator>().SetBool("Run", false);               // animacion idle
         }
 
         if (Input.GetKey("w") && CheckG.isg || Input.GetKey("space") && CheckG.isg)                           // SALTO         
         {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpSpeed);
+            rigitBodyCharacter.velocity = new Vector2(rigitBodyCharacter.velocity.x, jumpSpeedPlayer);
         }
         
         if (CheckG.isg == false)                                                                               // EN EL AIRE
         {
-            gameObject.GetComponent<Animator>().SetBool("Run", false);                 // animacion en el aire
+            //gameObject.GetComponent<Animator>().SetBool("Run", false);                 // animacion en el aire
         }
 
     }
