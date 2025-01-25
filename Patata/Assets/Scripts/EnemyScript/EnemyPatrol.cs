@@ -22,6 +22,8 @@ public class EnemyPatrol : MonoBehaviour
 
     private EnemyStadistics enemyStadistics;
     private PlayerStadistics playerStadistics;
+    public GameObject mainCharacter;
+    public int enemyType;
 
 
     void Start()
@@ -32,12 +34,22 @@ public class EnemyPatrol : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         leftLimit=leftLimit+rb.position.x;
         rightLimit=rightLimit+rb.position.x;
-        initialYPosition = transform.position.y;
     }
 
     void Update()
     {
-        CombinedPatrolJump();
+        switch (enemyType)
+        {
+            case 1:
+                Patrol();
+                break;
+            case 2:
+                CombinedPatrol();
+                break;
+            case 3:
+                CombinedPatrolJump();
+                break;
+        }
     }
 
     void Patrol()
@@ -45,7 +57,7 @@ public class EnemyPatrol : MonoBehaviour
         // Mover enemigo
         if (movingRight)
         {
-            rb.velocity = new Vector2(enemyStadistics.enemyMoveSpeed, Random.Range(1f,3f));
+            rb.velocity = new Vector2(enemyStadistics.enemyMoveSpeed,  rb.velocity.y);
             sprite.flipX = false; // Ajuste basado en la orientación de sprite
             // Verifica si se alcanzo el limite derecho
             if (rb.position.x >= rightLimit)
@@ -55,7 +67,7 @@ public class EnemyPatrol : MonoBehaviour
         }
         else
         {
-            rb.velocity = new Vector2(-enemyStadistics.enemyMoveSpeed, Random.Range(-3f,-0.5f));
+            rb.velocity = new Vector2(-enemyStadistics.enemyMoveSpeed, rb.velocity.y);
             sprite.flipX = true;
 
             // Verifica si se alcanzo el limite derecho
@@ -69,42 +81,42 @@ public class EnemyPatrol : MonoBehaviour
     void CombinedPatrol()
     {
     // Movimiento Horizontal (izquierda/derecha)
-    if (movingRight)
-    {
-        rb.velocity = new Vector2(enemyStadistics.enemyMoveSpeed, rb.velocity.y);
-        sprite.flipX = false; // Ajuste basado en la orientación del sprite
-        if (rb.position.x >= rightLimit)
+        if (movingRight)
         {
-            movingRight = false;
+            rb.velocity = new Vector2(enemyStadistics.enemyMoveSpeed, rb.velocity.y);
+            sprite.flipX = false; // Ajuste basado en la orientación del sprite
+            if (rb.position.x >= rightLimit)
+            {
+                movingRight = false;
+            }
         }
-    }
-    else
-    {
-        rb.velocity = new Vector2(-enemyStadistics.enemyMoveSpeed, rb.velocity.y);
-        sprite.flipX = true;
-        if (rb.position.x <= leftLimit)
+        else
         {
-            movingRight = true;
+            rb.velocity = new Vector2(-enemyStadistics.enemyMoveSpeed, rb.velocity.y);
+            sprite.flipX = true;
+            if (rb.position.x <= leftLimit)
+            {
+                movingRight = true;
+            }
         }
-    }
 
-    // Movimiento Vertical (arriba/abajo)
-    if (movingFly)
-    {
-        rb.velocity = new Vector2(rb.velocity.x, enemyStadistics.enemyMoveSpeedFly); // Mantener la velocidad horizontal mientras cambia la vertical
-        if (rb.position.y >= FlyTopLimit)
+        // Movimiento Vertical (arriba/abajo)
+        if (movingFly)
         {
-            movingFly = false;
+            rb.velocity = new Vector2(rb.velocity.x, enemyStadistics.enemyMoveSpeedFly); // Mantener la velocidad horizontal mientras cambia la vertical
+            if (rb.position.y >= FlyTopLimit)
+            {
+                movingFly = false;
+            }
         }
-    }
-    else
-    {
-        rb.velocity = new Vector2(rb.velocity.x, -enemyStadistics.enemyMoveSpeedFly);
-        if (rb.position.y <= FlyBottomLimit)
+        else
         {
-            movingFly = true;
+            rb.velocity = new Vector2(rb.velocity.x, -enemyStadistics.enemyMoveSpeedFly);
+            if (rb.position.y <= FlyBottomLimit)
+            {
+                movingFly = true;
+            }
         }
-    }
     }
 
     void CombinedPatrolJump()
@@ -139,8 +151,4 @@ public class EnemyPatrol : MonoBehaviour
         }
     }
 
-
-
-    
-    //Visualiza el limite de patrulla en el editor
 }
