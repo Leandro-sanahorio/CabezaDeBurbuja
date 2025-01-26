@@ -9,11 +9,13 @@ public class lifeshot : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(gameObject);
+        
         if (collision.collider.CompareTag("Enemy"))
         {
             enemyStadistics.takeDamage();
+            Destroy(gameObject);
         }
+        Destroy(gameObject);
     }
 
     private void Start()
