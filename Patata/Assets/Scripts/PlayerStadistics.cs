@@ -82,6 +82,16 @@ public class PlayerStadistics : MonoBehaviour
         {
             life=maximunLife;
         }
+        if (life>=15)
+        {
+            corazonesUI.ActivarVida(0);
+        }if(life>=10){
+            corazonesUI.ActivarVida(1);
+        }if(life>=5){
+            corazonesUI.ActivarVida(2);
+        }if(life>=0){
+            corazonesUI.ActivarVida(3);
+        }
     }
 
     public void takeDamage(int damageTaken)
