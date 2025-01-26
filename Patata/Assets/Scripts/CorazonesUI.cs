@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Linq;
-public class NewBehaviourScript : MonoBehaviour
+public class CorazonesUI : MonoBehaviour
 {
     public GameObject[] vidas;
 

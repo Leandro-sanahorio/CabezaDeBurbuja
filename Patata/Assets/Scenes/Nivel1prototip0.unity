@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 221228311}
   - component: {fileID: 221228310}
   m_Layer: 5
-  m_Name: Hear
+  m_Name: Hear1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 504118509}
   - component: {fileID: 504118508}
   m_Layer: 5
-  m_Name: Hear
+  m_Name: Hear4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1732,6 +1732,7 @@ MonoBehaviour:
   damage: 3
   enemyMoveSpeed: 2
   enemyMoveSpeedFly: 2
+  damageCooldown: 1
   enemyType: 0
 --- !u!1 &1320411226
 GameObject:
@@ -1826,10 +1827,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vidas:
-  - {fileID: 1732008817}
-  - {fileID: 504118506}
   - {fileID: 221228308}
   - {fileID: 1533263642}
+  - {fileID: 1732008817}
+  - {fileID: 504118506}
 --- !u!1 &1388523365
 GameObject:
   m_ObjectHideFlags: 0
@@ -2277,7 +2278,7 @@ GameObject:
   - component: {fileID: 1533263645}
   - component: {fileID: 1533263644}
   m_Layer: 5
-  m_Name: Hear
+  m_Name: Hear2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2513,7 +2514,7 @@ GameObject:
   - component: {fileID: 1732008820}
   - component: {fileID: 1732008819}
   m_Layer: 5
-  m_Name: Hear
+  m_Name: Hear3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

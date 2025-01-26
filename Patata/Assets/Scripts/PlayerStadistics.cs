@@ -17,9 +17,7 @@ public class PlayerStadistics : MonoBehaviour
 
     private float initialPositionX;
     private float initialPositionY;
-
-
-
+    private CorazonesUI corazonesUI;
     Rigidbody2D rigitBodyCharacter;
 
 
@@ -27,6 +25,7 @@ public class PlayerStadistics : MonoBehaviour
     {
         rigitBodyCharacter = GetComponent<Rigidbody2D>();
         checkG= FindObjectOfType<CheckG>();
+        corazonesUI=FindObjectOfType<CorazonesUI>();
     }
 
 
@@ -88,6 +87,16 @@ public class PlayerStadistics : MonoBehaviour
     public void takeDamage(int damageTaken)
     {
         life=life-damageTaken;
+        if (life<=15)
+        {
+            corazonesUI.DesactivarVida(0);
+        }if(life<=10){
+            corazonesUI.DesactivarVida(1);
+        }if(life<=5){
+            corazonesUI.DesactivarVida(2);
+        }if(life<=0){
+            corazonesUI.DesactivarVida(3);
+        }
     }
 
 }    
