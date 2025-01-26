@@ -7,11 +7,11 @@ using UnityEngine;
     public float walkSpeed = 3f;
 
     Rigidbody2D rb;
-    public enum WalkableDicrection { Right, Left }
+    public enum WalkableDirection { Right, Left }
 
-    private WalkableDicrection _walkDirection;
+    private WalkableDirection _walkDirection;
 
-    public WalkableDicrection WalkDirection
+    public WalkableDirection WalkDirection
     {
         get { return _walkDirection; }
         set { 
@@ -19,10 +19,10 @@ using UnityEngine;
             {
                 gameObject.transform.localScale = new Vector2(gameObject.transform.localScale.x * -1, gameObject.transform.localScale.y);
 
-                if(value == WalkableDicrection.Right)
+                if(value == WalkableDirection.Right)
                 {
                     walkDirectionVector = Vector2.right;
-                }else if(value == WalkableDicrection.Left)
+                }else if(value == WalkableDirection.Left)
                 {
                     walkDirectionVector = Vector2.left;
                 }
