@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1327116196}
-  force: 5
+  force: 6
 --- !u!50 &103231238
 Rigidbody2D:
   serializedVersion: 4
@@ -314,7 +314,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d53222831f70e514eb9465193aad878f, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -334,7 +334,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 103231234}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d53222831f70e514eb9465193aad878f, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
