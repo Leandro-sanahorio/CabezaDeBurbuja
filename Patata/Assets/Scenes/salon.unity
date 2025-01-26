@@ -955,6 +955,7 @@ GameObject:
   - component: {fileID: 626176719}
   - component: {fileID: 626176718}
   - component: {fileID: 626176717}
+  - component: {fileID: 626176720}
   m_Layer: 0
   m_Name: Librero (2)
   m_TagString: ground
@@ -1074,6 +1075,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &626176720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626176716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7aa1a2fdc0e5e488fd95e2fa38d891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: cocina
 --- !u!1 &629602688
 GameObject:
   m_ObjectHideFlags: 0
