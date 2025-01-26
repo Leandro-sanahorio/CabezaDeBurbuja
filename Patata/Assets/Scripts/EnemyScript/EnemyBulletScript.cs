@@ -24,12 +24,12 @@ public class EnemyBulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+       /* timer += Time.deltaTime;
         
         if(timer > 10)
         {
             Destroy(gameObject);
-        }
+        }*/
     }
 
     void OnTriggerEnter2D(Collider2D other)
