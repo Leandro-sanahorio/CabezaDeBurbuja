@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStadistics : MonoBehaviour
 {
@@ -70,7 +71,7 @@ public class PlayerStadistics : MonoBehaviour
                 gameObject.GetComponent<Animator>().SetBool("jump", false);
             } 
         }else{
-            Debug.Log("Perdiste");
+            SceneManager.LoadScene("salon");
         }
         
     }

@@ -13,4 +13,9 @@ public class ChangeScene : MonoBehaviour
             SceneManager.LoadScene(scene);
         }
     }
+
+    public void Inicio()
+    {
+        SceneManager.LoadScene("salon");
+    }
 }
